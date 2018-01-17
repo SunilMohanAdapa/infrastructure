@@ -15,10 +15,10 @@
 <!--You should have received a copy of the GNU General Public License-->
 <!--along with this program.  If not, see <http://www.gnu.org/licenses/>.-->
 
-<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="90">
-  <server artifactsdir="artifacts" agentAutoRegisterKey="1cf6988c-6f83-4038-b4da-514653ffcc3f" commandRepositoryLocation="default" serverId="d7655976-addc-4af1-8fb3-f22ed543056c" />
-  <pipelines group="stable">
-    <pipeline name="freedom-maker-amd64" isLocked="false" template="freedom-maker">
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="100">
+  <server artifactsdir="artifacts" purgeStart="25.0" purgeUpto="40.0" agentAutoRegisterKey="1cf6988c-6f83-4038-b4da-514653ffcc3f" webhookSecret="57e382f4-52ce-48b6-a474-70bb24a18411" commandRepositoryLocation="default" serverId="d7655976-addc-4af1-8fb3-f22ed543056c" tokenGenerationKey="91c6dc55-7e70-4bf3-98b0-00672cf5f14b" />
+  <pipelines group="debian-unstable">
+    <pipeline name="freedom-maker-amd64" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">amd64</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -27,10 +27,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-i386" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-i386" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">i386</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -39,10 +39,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-raspberry" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-raspberry" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">raspberry</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -51,10 +51,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-raspberry2" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-raspberry2" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">raspberry2</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -63,10 +63,22 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-dreamplug" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-raspberry3" lockBehavior="none" template="freedom-maker">
+      <params>
+        <param name="target">raspberry3</param>
+        <param name="apt_host">10.0.2.2:3142</param>
+        <param name="pipeline_name">freedom-maker-raspberry3</param>
+        <param name="artifact_name">freedombox-unstable-nonfree_dailydebian_raspberry3-armhf.img.xz</param>
+      </params>
+      <timer>0 0 18 1/1 * ? *</timer>
+      <materials>
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
+      </materials>
+    </pipeline>
+    <pipeline name="freedom-maker-dreamplug" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">dreamplug</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -75,10 +87,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-virtualbox-i386" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-virtualbox-i386" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">virtualbox-i386</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -87,10 +99,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-virtualbox-amd64" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-virtualbox-amd64" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">virtualbox-amd64</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -99,10 +111,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-qemu-i386" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-qemu-i386" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">qemu-i386</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -111,10 +123,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-qemu-amd64" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-qemu-amd64" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">qemu-amd64</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -123,10 +135,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-beaglebone" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-beaglebone" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">beaglebone</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -135,10 +147,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-cubieboard2" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-cubieboard2" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">cubieboard2</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -147,10 +159,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-cubietruck" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-cubietruck" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">cubietruck</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -159,10 +171,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-a20-olinuxino-lime" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-a20-olinuxino-lime" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">a20-olinuxino-lime</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -171,10 +183,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-a20-olinuxino-lime2" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-a20-olinuxino-lime2" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">a20-olinuxino-lime2</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -183,10 +195,10 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-a20-olinuxino-micro" isLocked="false" template="freedom-maker">
+    <pipeline name="freedom-maker-a20-olinuxino-micro" lockBehavior="none" template="freedom-maker">
       <params>
         <param name="target">a20-olinuxino-micro</param>
         <param name="apt_host">10.0.2.2:3142</param>
@@ -195,16 +207,26 @@
       </params>
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
+      </materials>
+    </pipeline>
+    <pipeline name="freedom-maker-pcDuino3" template="freedom-maker">
+      <params>
+        <param name="artifact_name">freedombox-unstable-free_dailydebian_pcduino3-armhf.img.xz</param>
+        <param name="apt_host">10.0.2.2:3142</param>
+        <param name="pipeline_name">freedom-maker-pcDuino3</param>
+        <param name="target">pcduino3</param>
+      </params>
+      <materials>
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
       </materials>
     </pipeline>
   </pipelines>
   <pipelines group="dev">
-    <pipeline name="plinth" isLocked="false">
+    <pipeline name="plinth" lockBehavior="none">
       <timer>0 0 18 1/1 * ? *</timer>
       <materials>
         <git url="https://github.com/freedombox/Plinth.git" shallowClone="true" dest="plinth_github" materialName="Plinth_Github" />
-        <git url="git://anonscm.debian.org/freedombox/plinth.git" dest="plinth_alioth" materialName="Plinth_Alioth" />
       </materials>
       <stage name="test" cleanWorkingDir="true">
         <jobs>
@@ -223,18 +245,23 @@
             <tasks>
               <exec command="bash" workingdir="plinth_github">
                 <arg>-c</arg>
+                <arg>sudo apt update; sudo DEBIAN_FRONTEND=noninteractive apt-get install -y $(apt-cache depends plinth | grep Depends | sed "s/.*ends:\ //" | tr '\n' ' ' | tr -d '&lt;&gt;') gir1.2-nm-1.0 python3-django-axes python3-django-captcha build-essential python3-setuptools python3-coverage sshpass parted `./run --list-dependencies`</arg>
+                <runif status="passed" />
+              </exec>
+              <exec command="bash" workingdir="plinth_github">
+                <arg>-c</arg>
                 <arg>python3 setup.py test &amp;&amp; touch ../passed</arg>
                 <runif status="passed" />
               </exec>
               <exec command="python3">
                 <arg>-c</arg>
-                <arg>import os; open('result', 'w').write('{"pipeline_name": "%s", "result": "Passed"}' % os.environ['GO_PIPELINE_NAME']) if os.path.exists('passed') else open('result', 'w').write('{"pipeline_name": "%s", "result": "Failed"}' % os.environ['GO_PIPELINE_NAME'])</arg>
-                <runif status="passed" />
+                <arg>import os; import json; import time; result = 'Passed' if os.path.exists('passed') else 'Failed'; data = {'pipeline_name': os.environ['GO_PIPELINE_NAME'], 'result': result, 'time': time.time()}; open('result', 'w').write(json.dumps(data))</arg>
+                <runif status="any" />
               </exec>
               <exec command="bash">
                 <arg>-c</arg>
                 <arg>mv result ${GO_PIPELINE_NAME}_status.json &amp;&amp; rsync ${GO_PIPELINE_NAME}_status.json ${ARTIFACT_UPLOAD_USER}@${ARTIFACT_HOST}:${ARTIFACT_UPLOAD_PATH} &amp;&amp; rm -f passed</arg>
-                <runif status="passed" />
+                <runif status="any" />
               </exec>
             </tasks>
             <resources>
@@ -247,11 +274,6 @@
         <jobs>
           <job name="build_deb">
             <tasks>
-              <exec command="mv">
-                <arg>plinth_alioth/debian</arg>
-                <arg>plinth_github</arg>
-                <runif status="passed" />
-              </exec>
               <exec command="sudo" workingdir="plinth_github">
                 <arg>mk-build-deps</arg>
                 <runif status="passed" />
@@ -300,7 +322,19 @@
         <param name="artifact_name">freedombox-unstable-free_dailyupstream_all-amd64.img.xz</param>
       </params>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
+        <pipeline pipelineName="plinth" stageName="package" materialName="Plinth_Deb" />
+      </materials>
+    </pipeline>
+    <pipeline name="freedom-maker-virtualbox-amd64_dev" template="freedom-maker_dev">
+      <params>
+        <param name="target">virtualbox-amd64</param>
+        <param name="apt_host">10.0.2.2:3142</param>
+        <param name="pipeline_name">freedom-maker-virtualbox-amd64_dev</param>
+        <param name="artifact_name">freedombox-unstable-free_dailyupstream_all-amd64.vdi.xz</param>
+      </params>
+      <materials>
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
         <pipeline pipelineName="plinth" stageName="package" materialName="Plinth_Deb" />
       </materials>
     </pipeline>
@@ -312,21 +346,127 @@
         <param name="artifact_name">freedombox-unstable-free_dailyupstream_a20-olinuxino-lime2-armhf.img.xz</param>
       </params>
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
+        <git url="https://salsa.debian.org/freedombox-team/freedom-maker.git" shallowClone="true" dest="freedommaker_salsa" materialName="FreedomMaker_Salsa" />
         <pipeline pipelineName="plinth" stageName="package" materialName="Plinth_Deb" />
       </materials>
     </pipeline>
-    <pipeline name="freedom-maker-raspberry2_dev" template="freedom-maker_dev">
-      <params>
-        <param name="artifact_name">freedombox-unstable-nonfree_dailyupstream_raspberry2-armhf.img.xz</param>
-        <param name="apt_host">10.0.2.2:3142</param>
-        <param name="pipeline_name">freedom-maker-raspberry2_dev</param>
-        <param name="target">raspberry2</param>
-      </params>
+    <pipeline name="functional-tests">
       <materials>
-        <git url="https://github.com/freedombox/freedom-maker.git" shallowClone="true" dest="freedommaker_github" autoUpdate="false" materialName="FreedomMaker_Github" />
-        <pipeline pipelineName="plinth" stageName="package" materialName="Plinth_Deb" />
+        <git url="https://github.com/freedombox/plinth-tester" dest="plinth-tester" materialName="plinth-tester" />
+        <pipeline pipelineName="freedom-maker-virtualbox-amd64_dev" stageName="build" materialName="virtualbox-image" />
       </materials>
+      <stage name="setup-tests" cleanWorkingDir="true">
+        <jobs>
+          <job name="install-test-dependencies">
+            <tasks>
+              <exec command="bash" workingdir="plinth-tester">
+                <arg>-c</arg>
+                <arg>sudo DEBIAN_FRONTEND=noninteractive apt install -y python3-pip python3-pytest xvfb</arg>
+                <runif status="passed" />
+              </exec>
+              <exec command="bash" workingdir="plinth-tester">
+                <arg>-c</arg>
+                <arg>pip3 install splinter pytest-splinter pytest-bdd pytest-xvfb</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+            <resources>
+              <resource>functional_test</resource>
+            </resources>
+          </job>
+          <job name="install-firefox">
+            <environmentvariables>
+              <variable name="VERSION">
+                <value>57.0.4</value>
+              </variable>
+            </environmentvariables>
+            <tasks>
+              <exec command="bash">
+                <arg>-c</arg>
+                <arg>wget -q https://download-installer.cdn.mozilla.net/pub/firefox/releases/$VERSION/linux-x86_64/en-US/firefox-$VERSION.tar.bz2; sudo tar jxf firefox-$VERSION.tar.bz2 -C /var/lib/; sudo ln -s -f /var/lib/firefox/firefox /usr/local/bin/</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+            <resources>
+              <resource>functional_test</resource>
+            </resources>
+          </job>
+          <job name="install-gecko-driver">
+            <environmentvariables>
+              <variable name="VERSION">
+                <value>0.19.1</value>
+              </variable>
+            </environmentvariables>
+            <tasks>
+              <exec command="bash">
+                <arg>-c</arg>
+                <arg>wget https://github.com/mozilla/geckodriver/releases/download/v$VERSION/geckodriver-v$VERSION-linux64.tar.gz; tar xzf geckodriver-v$VERSION-linux64.tar.gz; sudo mv geckodriver /usr/local/bin</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+            <resources>
+              <resource>functional_test</resource>
+            </resources>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="deploy-vm">
+        <jobs>
+          <job name="create-vm">
+            <tasks>
+              <fetchartifact pipeline="freedom-maker-virtualbox-amd64_dev" stage="build" job="build" srcfile="freedombox-unstable-free_dailyupstream_all-amd64.vdi.xz">
+                <runif status="passed" />
+              </fetchartifact>
+              <exec command="bash">
+                <arg>-c</arg>
+                <arg>unxz freedombox-unstable-free_dailyupstream_all-amd64.vdi.xz</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+            <resources>
+              <resource>app_server</resource>
+            </resources>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="run-tests">
+        <jobs>
+          <job name="run-setup-test">
+            <tasks>
+              <exec command="bash" workingdir="plinth-tester">
+                <arg>-c</arg>
+                <arg>py.test -x -k setup</arg>
+              </exec>
+            </tasks>
+            <resources>
+              <resource>functional_test</resource>
+            </resources>
+          </job>
+          <job name="run-system-tests">
+            <tasks>
+              <exec command="bash" workingdir="plinth-tester">
+                <arg>-c</arg>
+                <arg>py.test -x -k system</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+            <resources>
+              <resource>functional_test</resource>
+            </resources>
+          </job>
+          <job name="run-apps-tests">
+            <tasks>
+              <exec command="bash" workingdir="plinth-tester">
+                <arg>-c</arg>
+                <arg>py.test -x -k apps</arg>
+              </exec>
+            </tasks>
+            <resources>
+              <resource>functional_test</resource>
+            </resources>
+          </job>
+        </jobs>
+      </stage>
     </pipeline>
   </pipelines>
   <templates>
@@ -349,7 +489,7 @@
               </variable>
             </environmentvariables>
             <tasks>
-              <exec command="bash" workingdir="freedommaker_github">
+              <exec command="bash" workingdir="freedommaker_salsa">
                 <arg>-c</arg>
                 <arg>python3 -m freedommaker --build-mirror=http://#{apt_host}/debian --build-stamp=dailydebian #{target} &amp;&amp; touch ../passed</arg>
                 <runif status="passed" />
@@ -366,7 +506,7 @@
               </exec>
               <exec command="python3">
                 <arg>-c</arg>
-                <arg>import os; open('result', 'w').write('{"pipeline_name": "%s", "result": "Passed"}' % os.environ['GO_PIPELINE_NAME']) if os.path.exists('passed') else open('result', 'w').write('{"pipeline_name": "%s", "result": "Failed"}' % os.environ['GO_PIPELINE_NAME'])</arg>
+                <arg>import os; import json; import time; result = 'Passed' if os.path.exists('passed') else 'Failed'; data = {'pipeline_name': os.environ['GO_PIPELINE_NAME'], 'result': result, 'time': time.time()}; open('result', 'w').write(json.dumps(data))</arg>
                 <runif status="any" />
               </exec>
               <exec command="bash">
@@ -379,8 +519,8 @@
               <resource>img</resource>
             </resources>
             <artifacts>
-              <artifact src="freedommaker_github/build/*.xz" />
-              <artifact src="freedommaker_github/build/*.log" />
+              <artifact src="freedommaker_salsa/build/*.xz" />
+              <artifact src="freedommaker_salsa/build/*.log" />
             </artifacts>
           </job>
         </jobs>
@@ -409,6 +549,13 @@
                 <runif status="passed" />
               </exec>
             </tasks>
+            <resources>
+              <resource>img</resource>
+              <resource>publish</resource>
+            </resources>
+            <artifacts>
+              <artifact src="freedombox-*.xz" />
+            </artifacts>
           </job>
         </jobs>
       </stage>
@@ -432,12 +579,12 @@
               </variable>
             </environmentvariables>
             <tasks>
-              <fetchartifact pipeline="plinth" stage="package" job="build_deb" srcfile="plinth.deb" dest="freedommaker_github">
+              <fetchartifact pipeline="plinth" stage="package" job="build_deb" srcfile="plinth.deb" dest="freedommaker_salsa">
                 <runif status="passed" />
               </fetchartifact>
-              <exec command="bash" workingdir="freedommaker_github">
+              <exec command="bash" workingdir="freedommaker_salsa">
                 <arg>-c</arg>
-                <arg>python3 -m freedommaker --build-mirror=http://#{apt_host}/debian --custom-package=plinth.deb --build-stamp=dailyupstream #{target} &amp;&amp; touch ../passed</arg>
+                <arg>python3 -m freedommaker --force --build-mirror=http://#{apt_host}/debian --custom-package=plinth.deb --build-stamp=dailyupstream #{target} &amp;&amp; touch ../passed</arg>
                 <runif status="passed" />
               </exec>
               <exec command="bash">
@@ -452,7 +599,7 @@
               </exec>
               <exec command="python3">
                 <arg>-c</arg>
-                <arg>import os; open('result', 'w').write('{"pipeline_name": "%s", "result": "Passed"}' % os.environ['GO_PIPELINE_NAME']) if os.path.exists('passed') else open('result', 'w').write('{"pipeline_name": "%s", "result": "Failed"}' % os.environ['GO_PIPELINE_NAME'])</arg>
+                <arg>import os; import json; import time; result = 'Passed' if os.path.exists('passed') else 'Failed'; data = {'pipeline_name': os.environ['GO_PIPELINE_NAME'], 'result': result, 'time': time.time()}; open('result', 'w').write(json.dumps(data))</arg>
                 <runif status="any" />
               </exec>
               <exec command="bash">
@@ -465,8 +612,8 @@
               <resource>img</resource>
             </resources>
             <artifacts>
-              <artifact src="freedommaker_github/build/*.xz" />
-              <artifact src="freedommaker_github/build/*.log" />
+              <artifact src="freedommaker_salsa/build/*.xz" />
+              <artifact src="freedommaker_salsa/build/*.log" />
             </artifacts>
           </job>
         </jobs>
@@ -495,6 +642,9 @@
                 <runif status="passed" />
               </exec>
             </tasks>
+            <resources>
+              <resource>publish</resource>
+            </resources>
           </job>
         </jobs>
       </stage>
@@ -504,9 +654,10 @@
     <agent hostname="eowyn" ipaddress="192.168.33.14" uuid="39fe29de-9a94-472e-ae1d-482140c7d822">
       <resources>
         <resource>img</resource>
+        <resource>publish</resource>
       </resources>
     </agent>
-    <agent hostname="frodo" ipaddress="192.168.33.12" uuid="5232088b-68a2-4e4b-8f33-e4e827e23bca">
+    <agent hostname="frodo" ipaddress="192.168.33.12" uuid="5232088b-68a2-4e4b-8f33-e4e827e23bca" isDisabled="true">
       <resources>
         <resource>img</resource>
       </resources>
@@ -514,24 +665,33 @@
     <agent hostname="gandalf" ipaddress="192.168.33.11" uuid="de3700f0-e162-45b7-a30d-37117bde5204">
       <resources>
         <resource>img</resource>
+        <resource>publish</resource>
       </resources>
     </agent>
     <agent hostname="legolas" ipaddress="192.168.33.10" uuid="8fc7439b-6c3c-4700-9337-ed6e29082d16">
       <resources>
         <resource>img</resource>
+        <resource>publish</resource>
       </resources>
     </agent>
     <agent hostname="samwise" ipaddress="192.168.33.13" uuid="c33d41c3-c2c3-4f61-b66f-5fafe2d3f298">
       <resources>
         <resource>img</resource>
+        <resource>publish</resource>
       </resources>
     </agent>
     <agent hostname="bilbo" ipaddress="192.168.33.15" uuid="c63d10e5-9b21-4660-b199-cc70a9e3350f">
       <resources>
         <resource>unit_test</resource>
         <resource>gbp</resource>
+        <resource>functional_test</resource>
+        <resource>publish</resource>
+      </resources>
+    </agent>
+    <agent hostname="mordor" ipaddress="127.0.0.1" uuid="0de87a3a-57ee-4ba7-8627-9e4c6ee1f38c">
+      <resources>
+        <resource>app_server</resource>
       </resources>
     </agent>
   </agents>
 </cruise>
-
